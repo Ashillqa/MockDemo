@@ -1,6 +1,7 @@
 package com.qa.service;
 
 import com.qa.domain.Player;
+import com.qa.exception.PlayerNotFoundException;
 import com.qa.repo.playerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class playerService {
     }
     public boolean deletePlayer(Long id){
         if(!this.repo.existsById(id)){
-            throw new playerNotFoundException;
+            throw new PlayerNotFoundException();
         }
         this.repo.deleteById(id);
         return this.repo.existsById(id);
