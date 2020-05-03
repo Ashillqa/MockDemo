@@ -1,0 +1,113 @@
+body{
+    background-color: rgb(215, 209, 219);
+}
+.intro {
+    border: 1px solid gray;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    margin-right: 250px;
+    margin-left: 250px;
+}
+
+
+.appName {
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgb(1, 1, 10);
+}
+.intro {
+    text-align: left;
+    letter-spacing: 3px;
+    font-weight: bolder;
+}
+
+#imgOne {
+    float:left;
+    margin-left:300px
+}
+
+.dropdown{
+    position: absolute;
+    display: inline-block;
+}
+.menuContent {
+    display: none;
+    position: absolute;
+    background-color: #078517;
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+    min-width: 90px;
+    box-shadow: 0px 5px 1px 0px rgba(0,0,0,0.2);
+    padding: 1px 6px;
+    z-index: 1;
+}
+.dropdown:hover .menuContent {
+    display: block;
+}
+.cp{
+    position: absolute;
+    top: 300px;
+    border: 1px solid gray;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    margin-right: 250px;
+    margin-left: 250px;
+    background-color: #078517;
+
+}
+.dp{
+    position: absolute;
+    top: 300px;
+    left: 330px;
+    border: 1px solid gray;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    margin-right: 650px;
+    margin-left: 250px;
+    background-color: #078517;
+
+}
+.ep{
+    position: absolute;
+    top: 300px;
+    left: 603px;
+    border: 1px solid gray;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    margin-right: 250px;
+    margin-left: 250px;
+    background-color: #078517;
+
+}
+input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none;
+}
+label{
+    color: azure;
+}
+#createP{
+    position: relative;
+    left: 130px;
+}
+#delP{
+    position: relative;
+    left: 130px;
+}
+#updP{
+    position: relative;
+    left: 150px;
+}

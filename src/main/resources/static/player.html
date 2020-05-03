@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Players</title>
+</head>
+<body>
+<h1 class="appName"><a href="player.html" class="appName"> Create Your Players</a></h1>
+<div class="dropdown">
+    <nav>
+        <h2><strong>Menu</strong></h2>
+        <div class="menuContent">
+            <p id="home"><a href="/Homepage.html" class = "cplayer" style="color: azure;">Home</a></p>
+            <p id="vplayer">view players</p>
+        </div>
+    </nav>
+</div>
+<section id="one" class="cp" >
+    <div class="createForm">
+        <legend style="color: azure;">Create Your Player</legend>
+        <ul>
+            <li>
+                <label for="name">name:</label>
+                <input id="name" name="name" placeholder="name" type="text" />
+            </li>
+            <li>
+                <label for="position">Position:</label>
+                <input id="position" name="position"placeholder="position" type="text" />
+            </li>
+            <li>
+                <label for="goals">Goals:</label>
+                <input id="goals" name="goals" placeholder="goals" type="number" min="0" />
+            </li>
+            <li>
+                <label for="assists">Assists:</label>
+                <input id="assists" name="assists" placeholder="assists" type="number" min="0" />
+            </li>
+        </ul>
+        <button id="createP" type="submit">Create</button>
+    </div>
+</section>
+<section id="two" class="dp">
+    <div class="deleteForm">
+        <legend style="color: azure;">Delete a player</legend>
+        <ul>
+            <li>
+                <label for ="players">Choose player to Delete:</label>
+                <input id="players" name="players" placeholder="name" type="text"/>
+            </li>
+        </ul>
+        <button id="delP" type="submit">Delete</button>
+    </div>
+</section>
+<section id=three class="ep">
+    <div class="editForm">
+        <legend style="color: azure;">Edit a player</legend>
+        <ul>
+            <li>
+                <label for ="playeru">Choose player to update:</label>
+                <input id="playeru" name="playeru" placeholder="name" type="text"/>
+            </li>
+            <li>
+                <label for="posUp">Update position</label>
+                <input id="posUp" name="posUp" placeholder="position" type="text"/>
+            </li>
+            <li>
+                <label for="goalUp">Update goals</label>
+                <input id="goalUp" name="goalUp" placeholder="goals" type="number" min="0"/>
+            </li>
+            <label for="assUp">Update assists</label>
+            <input id="assUp" name="assUp" placeholder="assists" type="number" min="0"/>
+        </ul>
+        <button id="updP" type="submit">Update</button>
+    </div>
+</section>
+
+</body>
+</html>
