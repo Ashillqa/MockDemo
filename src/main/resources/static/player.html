@@ -12,37 +12,43 @@
     <nav>
         <h2><strong>Menu</strong></h2>
         <div class="menuContent">
-            <p id="home"><a href="/Homepage.html" class = "cplayer" style="color: azure;">Home</a></p>
+            <p id="home"><a href="Homepage.html" class = "cplayer" style="color: azure;">Home</a></p>
             <p id="vplayer">view players</p>
         </div>
     </nav>
 </div>
 <section id="one" class="cp" >
-    <div class="createForm">
+    <form name="createForm" id="cForm" method="post">
+        <fieldset>
         <legend style="color: azure;">Create Your Player</legend>
         <ul>
             <li>
                 <label for="name">name:</label>
-                <input id="name" name="name" placeholder="name" type="text" />
+                <input id="name" name="name" type="text" required/>
             </li>
             <li>
                 <label for="position">Position:</label>
-                <input id="position" name="position"placeholder="position" type="text" />
+                <input id="position" name="position" type="text" required />
             </li>
             <li>
                 <label for="goals">Goals:</label>
-                <input id="goals" name="goals" placeholder="goals" type="number" min="0" />
+                <input id="goals" name="goals"  type="number" value="0" min="0" required />
             </li>
             <li>
                 <label for="assists">Assists:</label>
-                <input id="assists" name="assists" placeholder="assists" type="number" min="0" />
+                <input id="assists" name="assists"  type="number" value="0" min="0" required/>
+            </li>
+            <li>
+                <label for="tackles">Tackles:</label>
+                <input id="tackles" name="tackles" type="number" value="0" min="0" required/>
             </li>
         </ul>
         <button id="createP" type="submit">Create</button>
-    </div>
+        </fieldset>
+    </form>
 </section>
 <section id="two" class="dp">
-    <div class="deleteForm">
+    <form id="deleteForm" method="DELETE">
         <legend style="color: azure;">Delete a player</legend>
         <ul>
             <li>
@@ -51,10 +57,10 @@
             </li>
         </ul>
         <button id="delP" type="submit">Delete</button>
-    </div>
+    </form>
 </section>
 <section id=three class="ep">
-    <div class="editForm">
+    <form id="editForm" method="PUT">
         <legend style="color: azure;">Edit a player</legend>
         <ul>
             <li>
@@ -73,8 +79,9 @@
             <input id="assUp" name="assUp" placeholder="assists" type="number" min="0"/>
         </ul>
         <button id="updP" type="submit">Update</button>
-    </div>
+    </form>
 </section>
+<script src="playerCreate.js"></script>
 
 </body>
 </html>

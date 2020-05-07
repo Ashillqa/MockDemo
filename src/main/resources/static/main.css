@@ -111,3 +111,9 @@ label{
     position: relative;
     left: 150px;
 }
+input:valid{
+    border: 1px solid blue;
+}
+input:invalid{
+    border: 1px solid red;
+}
