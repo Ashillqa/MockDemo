@@ -49,14 +49,14 @@ public class CatController {
     }
     // Deleting employee again takes a path variable of Long Id but using the the ? because boolean
     @DeleteMapping("/deleteCat/{id}")
-    public ResponseEntity<?> deleteSect(@PathVariable Long id){
+    public ResponseEntity<?> deleteCat(@PathVariable Long id){
         return this.service.deleteCat(id)
                 ? ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
                 : ResponseEntity.noContent().build();
     }
 
     @PatchMapping("/addPlayerToCat/{id}")
-    public ResponseEntity<CatDTO> addEmpToSect(@PathVariable Long id, @RequestBody Player player){
+    public ResponseEntity<CatDTO> addCatToCat(@PathVariable Long id, @RequestBody Player player){
         return new ResponseEntity<CatDTO>(this.service.addPlayerToCat(id,player), HttpStatus.ACCEPTED);
     }
 
