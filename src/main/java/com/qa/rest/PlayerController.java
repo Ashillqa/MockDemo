@@ -30,10 +30,12 @@ public class PlayerController {
     public Player createPlayer(@RequestBody Player player){
         return this.service.createPlayer(player);
     }
+
     @DeleteMapping("/deletePlayer/{id}")
     public boolean deletePlayer(@PathVariable Long id){
         return this.service.deletePlayer(id);
     }
+
     @PutMapping("/updatePlayer/{id}")
     public Player updatePlayer(@PathVariable Long id,@RequestBody Player player){
         return this.service.updatePlayer(id,player);

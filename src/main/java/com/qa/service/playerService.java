@@ -31,9 +31,7 @@ public class playerService {
 
     public Player updatePlayer(Long id, Player player){
         Player update = findPlayerById(id);
-        update.setName(player.getName());
         update.setGoals(player.getGoals());
-        update.setAssists(player.getAssists());
         return this.repo.save(update);
     }
     public boolean deletePlayer(Long id){
