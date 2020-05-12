@@ -14,10 +14,7 @@ public class Player {
     private Long id;
 
     private String name;
-    private String position;
     private Long goals;
-    private Long assists;
-    private Long tackles;
 
     public Long getId() {
         return id;
@@ -35,36 +32,12 @@ public class Player {
         this.name = name;
     }
 
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
     public Long getGoals() {
         return goals;
     }
 
     public void setGoals(Long goals) {
         this.goals = goals;
-    }
-
-    public Long getAssists() {
-        return assists;
-    }
-
-    public void setAssists(Long assists) {
-        this.assists = assists;
-    }
-
-    public Long getTackles() {
-        return tackles;
-    }
-
-    public void setTackles(Long tackles) {
-        this.tackles = tackles;
     }
 
     @Override
@@ -74,14 +47,11 @@ public class Player {
         Player player = (Player) o;
         return id.equals(player.id) &&
                 name.equals(player.name) &&
-                position.equals(player.position) &&
-                goals.equals(player.goals) &&
-                assists.equals(player.assists) &&
-                tackles.equals(player.tackles);
+                goals.equals(player.goals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, position, goals, assists, tackles);
+        return Objects.hash(id, name,goals);
     }
 }
