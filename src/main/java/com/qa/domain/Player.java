@@ -1,9 +1,6 @@
 package com.qa.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +12,17 @@ public class Player {
 
     private String name;
     private Long goals;
+
+    @ManyToOne(targetEntity = Category.class)
+    private Category category;
+
+    public Player() {
+    }
+
+    public Player(String name, Long goals) {
+        this.name = name;
+        this.goals = goals;
+    }
 
     public Long getId() {
         return id;
@@ -40,6 +48,14 @@ public class Player {
         this.goals = goals;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,11 +63,12 @@ public class Player {
         Player player = (Player) o;
         return id.equals(player.id) &&
                 name.equals(player.name) &&
-                goals.equals(player.goals);
+                goals.equals(player.goals) &&
+                category.equals(player.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name,goals);
+        return Objects.hash(id, name, goals, category);
     }
 }
