@@ -1,4 +1,4 @@
-function Delfunc(id) {
+function delFunc(id) {
     fetch('http://localhost:8080/deletePlayer/'+id,{
         method: 'DELETE'
     }).then(res => res.text())

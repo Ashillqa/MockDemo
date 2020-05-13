@@ -10,7 +10,7 @@ function getData() {
                 <ul>
                     <li> Name : ${name}</li>
                     <li> Goals : ${goals} </li>
-                    <button onclick="Delfunc(${id})">Delete</button><span>
+                    <button onclick="delFunc(${id})">Delete</button><span>
                     <p>Update goals</p><input id="U${id}" type="number" min="0">
                     <button onclick="updP(${id},'${name}')">Update</button></span>
                 </ul>
