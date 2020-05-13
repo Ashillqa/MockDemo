@@ -6,7 +6,7 @@ function getPerfData() {
         .then(function (data) {
             data.forEach((user) => {
                 const {id,level} = user;
-                document.getElementById('resultSect').innerHTML += `<div>
+                document.getElementById('resultPerf').innerHTML += `<div>
                     <h2> Level : ${level}</h2>
                     <p id="C${id}"></p>
                 
