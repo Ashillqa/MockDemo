@@ -5,7 +5,7 @@ function getData() {
         })
         .then(function (data) {
             data.forEach((user) => {
-                const {id,name, goals} = user;
+                const {id,name,goals} = user;
                 document.getElementById('result').innerHTML += `<div>
                 <ul>
                     <li> Name : ${name}</li>
