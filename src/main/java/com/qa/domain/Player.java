@@ -57,14 +57,27 @@ public class Player {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
-        return id.equals(player.id) &&
-                name.equals(player.name) &&
-                goals.equals(player.goals) &&
-                category.equals(player.category);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Player other = (Player) obj;
+        if (goals == null) {
+            if (other.goals != null)
+                return false;
+        } else if (goals.equals(other.goals))
+            return false;
+        if (id != other.id)
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        return true;
     }
 
     @Override
