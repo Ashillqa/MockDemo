@@ -1,33 +1,17 @@
-package com.qa.domain;
+package com.qa.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Users {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class UsersDTO {
+    private long id;
 
     private String username;
+
     private String password;
 
-    public Users() {
-    }
-
-    public Users(String username,String password) {
-        super();
-        this.username = username;
-        this.password=password;
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -46,6 +30,19 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + (int) (id ^ (id >>> 32));
+        result = prime * result + ((username == null) ? 0 : username.hashCode());
+        return result;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -54,7 +51,7 @@ public class Users {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Users other = (Users) obj;
+        UsersDTO other = (UsersDTO) obj;
         if (password == null) {
             if (other.password != null)
                 return false;
@@ -69,5 +66,5 @@ public class Users {
             return false;
         return true;
     }
-}
 
+}
