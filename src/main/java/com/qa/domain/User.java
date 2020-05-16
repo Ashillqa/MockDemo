@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class User {
@@ -69,4 +70,11 @@ public class User {
             return false;
         return true;
     }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password);
+    }
+
+
+
 }

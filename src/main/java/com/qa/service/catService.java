@@ -47,8 +47,7 @@ public class catService {
     public CatDTO updateCat(Long id, Category category){
         Category update = this.repo.findById(id).orElseThrow(CatNotFoundException::new);
         update.setPlayers(category.getPlayers());
-        Category tempCat = this.repo.save(update);
-        return this.mapToDto(tempCat);
+        return this.mapToDto(this.repo.save(update));
     }
 //////////////////delete a category which returns false after looking for it again/////////////////
     public boolean deleteCat(Long id){
