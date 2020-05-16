@@ -199,6 +199,31 @@ public class domainTest {
         user.setId(5L);
         assertEquals(false,user2.getId().equals(user.getId()));
     }
+    @Test
+    public void UserequalsWithNull() {
+        assertFalse(user.equals(null));
+    }
+
+    @Test
+    public void UserequalsWithDifferentObject() {
+        assertFalse(user.equals(new Object()));
+    }
+    @Test
+    public void UsercheckEquality() {
+        assertTrue(user.equals(user));
+    }
+    @Test
+    public void UsercheckEqualityBetweenDifferentObjects() {
+        assertEquals(user.equals(user2),true);
+    }
+    @Test
+    public void UserhashCodeTest() {
+        assertEquals(user.hashCode(), user2.hashCode());
+    }
+
+
+
+
 
 
 

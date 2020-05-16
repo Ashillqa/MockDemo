@@ -7,6 +7,14 @@ public class UserDTO {
 
     private String password;
 
+    public UserDTO() {
+    }
+
+    public UserDTO(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public long getId() {
         return id;
     }
@@ -31,7 +39,17 @@ public class UserDTO {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserDTO)) return false;
 
+        UserDTO userDTO = (UserDTO) o;
+
+        if (getId() != userDTO.getId()) return false;
+        if (!getUsername().equals(userDTO.getUsername())) return false;
+        return getPassword().equals(userDTO.getPassword());
+    }
 
     @Override
     public int hashCode() {
@@ -43,27 +61,5 @@ public class UserDTO {
         return result;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UserDTO other = (UserDTO) obj;
-        if (password == null) {
-            if (other.password != null)
-                return false;
-        } else if (!password.equals(other.password))
-            return false;
-        if (id != other.id)
-            return false;
-        if (username == null) {
-            if (other.username != null)
-                return false;
-        } else if (!username.equals(other.username))
-            return false;
-        return true;
-    }
+
 }

@@ -1,5 +1,7 @@
 package com.qa.domain;
 
+import org.aspectj.weaver.patterns.HasThisTypePatternTriedToSneakInSomeGenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -12,6 +14,8 @@ public class Player {
 
     private String name;
     private Long goals;
+    private Long assists;
+    private Long tackles;
 
     @ManyToOne(targetEntity = Category.class)
     private Category category;
@@ -19,9 +23,11 @@ public class Player {
     public Player() {
     }
 
-    public Player(String name, Long goals) {
+    public Player(String name, Long goals,Long assists,Long tackles) {
         this.name = name;
         this.goals = goals;
+        this.assists= assists;
+        this.tackles=tackles;
     }
 
     public Long getId() {
