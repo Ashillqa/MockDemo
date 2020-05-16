@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,10 +14,10 @@ public class Users {
     private String username;
     private String password;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String username,String password) {
+    public User(String username,String password) {
         super();
         this.username = username;
         this.password=password;
@@ -54,7 +54,7 @@ public class Users {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Users other = (Users) obj;
+        User other = (User) obj;
         if (password == null) {
             if (other.password != null)
                 return false;
@@ -70,4 +70,3 @@ public class Users {
         return true;
     }
 }
-

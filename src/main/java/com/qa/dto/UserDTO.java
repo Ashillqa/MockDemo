@@ -1,6 +1,6 @@
 package com.qa.dto;
 
-public class UsersDTO {
+public class UserDTO {
     private long id;
 
     private String username;
@@ -51,7 +51,7 @@ public class UsersDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UsersDTO other = (UsersDTO) obj;
+        UserDTO other = (UserDTO) obj;
         if (password == null) {
             if (other.password != null)
                 return false;
@@ -66,5 +66,4 @@ public class UsersDTO {
             return false;
         return true;
     }
-
 }
