@@ -13,7 +13,7 @@ public class Category {
     private String level;
 
     @OneToMany(mappedBy ="category", fetch = FetchType.LAZY)
-    private List<Player> players = new ArrayList<>();
+    private List<Player> player = new ArrayList<>();
 
     public Category() {
     }
@@ -39,10 +39,10 @@ public class Category {
     }
 
     public List<Player> getPlayers() {
-        return players;
+        return player;
     }
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
+    public void setPlayers(List<Player> player) {
+        this.player = player;
     }
 }

@@ -70,14 +70,14 @@ public class CatControllerUnitTest {
     }
 
     @Test
-    public void deleteEmpTestTrue(){
+    public void deleteCatTestTrue(){
         when(service.deleteCat(1L)).thenReturn(true);
         this.controller.deleteCat(1L);
         verify(service, times(1)).deleteCat(1L);
     }
 
     @Test
-    public void getEmpByIDTest(){
+    public void getCatByIDTest(){
         when(this.service.findCatById(id)).thenReturn(this.cDTO);
         assertEquals(this.controller.catById(id), new ResponseEntity<CatDTO>(this.cDTO, HttpStatus.OK));
         verify(service, times(1)).findCatById(id);

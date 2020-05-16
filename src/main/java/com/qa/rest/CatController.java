@@ -43,10 +43,6 @@ public class CatController {
         return ResponseEntity.ok(this.service.updateCat(id, category));
     }
     // update another version of updating again using Dto
-    @PutMapping("/updateCat2")
-    public ResponseEntity<CatDTO> updateCat2(@PathParam("id") Long id, @RequestBody Category category){
-        return ResponseEntity.ok(this.service.updateCat(id, category));
-    }
     // Deleting employee again takes a path variable of Long Id but using the the ? because boolean
     @DeleteMapping("/deleteCat/{id}")
     public ResponseEntity<?> deleteCat(@PathVariable Long id){
