@@ -62,6 +62,22 @@ public class Player {
         this.category = category;
     }
 
+    public Long getAssists() {
+        return assists;
+    }
+
+    public void setAssists(Long assists) {
+        this.assists = assists;
+    }
+
+    public Long getTackles() {
+        return tackles;
+    }
+
+    public void setTackles(Long tackles) {
+        this.tackles = tackles;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -75,6 +91,16 @@ public class Player {
             if (other.goals != null)
                 return false;
         } else if (goals.equals(other.goals))
+            return false;
+        if (assists == null) {
+            if (other.assists != null)
+                return false;
+        } else if (assists.equals(other.assists))
+            return false;
+        if (tackles == null) {
+            if (other.tackles != null)
+                return false;
+        } else if (tackles.equals(other.tackles))
             return false;
         if (id != other.id)
             return false;
@@ -93,6 +119,8 @@ public class Player {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((goals == null) ? 0 : goals.hashCode());
+        result = prime * result + ((assists == null) ? 0 : assists.hashCode());
+        result = prime * result + ((tackles == null) ? 0 : tackles.hashCode());
         return result;
     }
 }

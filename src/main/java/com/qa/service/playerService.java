@@ -46,6 +46,8 @@ public class playerService {
     public PlayerDTO updatePlayer(Long id, Player player){
         Player update = this.repo.findById(id).orElseThrow(PlayerNotFoundException::new);
         update.setGoals(player.getGoals());
+        update.setAssists(player.getAssists());
+        update.setTackles(player.getTackles());
         return this.mapToDto(this.repo.save(player));
     }
 

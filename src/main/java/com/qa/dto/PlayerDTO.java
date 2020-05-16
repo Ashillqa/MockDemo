@@ -7,13 +7,17 @@ public class PlayerDTO {
     private Long id;
     private String name;
     private Long goals;
+    private Long assists;
+    private Long tackles;
 
     public PlayerDTO() {
     }
 
-    public PlayerDTO(String name, Long goals) {
+    public PlayerDTO(String name, Long goals,Long assists,Long tackles) {
         this.name = name;
         this.goals = goals;
+        this.assists = assists;
+        this.tackles = tackles;
     }
 
     public Long getId() {
@@ -40,6 +44,14 @@ public class PlayerDTO {
         this.goals = goals;
     }
 
+    public Long getAssists() { return assists; }
+
+    public void setAssists(Long assists) { this.assists = assists; }
+
+    public Long getTackles() { return tackles; }
+
+    public void setTackles(Long tackles) { this.tackles = tackles; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,6 +59,8 @@ public class PlayerDTO {
         PlayerDTO playerDTO = (PlayerDTO) o;
         return id.equals(playerDTO.id) &&
                 name.equals(playerDTO.name) &&
+                assists.equals(playerDTO.assists) &&
+                tackles.equals(playerDTO.tackles) &&
                 goals.equals(playerDTO.goals);
     }
 
