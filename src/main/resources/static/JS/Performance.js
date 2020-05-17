@@ -22,20 +22,26 @@ function getPlayer2() {
         })
         .then(function (data) {
             data.forEach((user) => {
-                const {name,goals} = user;
-                if(`${goals}`<3){ document.getElementById('C1').innerHTML += `<div>
+                const {name,goals,assists,tackles} = user;
+                if(`${goals}`>`${assists}`&&`${goals}`>=`${tackles}`){ document.getElementById('C3').innerHTML += `<div>
                 <ul>
                     <li> Name : ${name}</li>
                 </ul>
             </div>` ;
-                }else if (`${goals}`<5){
+                }else if (`${assists}`>`${goals}`&&`${assists}`>=`${tackles}`){
                     document.getElementById('C2').innerHTML += `<div>
                 <ul>
                     <li> Name : ${name}</li>
                 </ul>
             </div>` ;
-                }else{
-                    document.getElementById('C3').innerHTML += `<div>
+                }else if(`${tackles}`>`${goals}`&&`${tackles}`>`${assists}`){
+                    document.getElementById('C1').innerHTML += `<div>
+                <ul>
+                    <li> Name : ${name}</li>
+                </ul>
+            </div>` ;
+                } else{
+                    document.getElementById('C4').innerHTML += `<div>
                 <ul>
                     <li> Name : ${name}</li>
                 </ul>
