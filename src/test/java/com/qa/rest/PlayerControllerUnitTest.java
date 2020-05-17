@@ -41,9 +41,9 @@ public class PlayerControllerUnitTest {
     @Before
     public void setUp(){
         this.players=new ArrayList<>();
-        this.testPlayer= new Player("name",3L);
+        this.testPlayer= new Player("name",3L,4L,5L);
         this.players.add(testPlayer);
-        this.testPlayerWithId = new Player(testPlayer.getName(),testPlayer.getGoals());
+        this.testPlayerWithId = new Player(testPlayer.getName(),testPlayer.getGoals(),testPlayer.getAssists(),testPlayer.getTackles());
         this.testPlayerWithId.setId(this.id);
         this.pDTO = this.mapToDto(testPlayerWithId);
     }

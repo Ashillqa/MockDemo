@@ -100,8 +100,8 @@ public class CatServiceUnitTest {
     }
     @Test
     public void addPlayerToCatTest(){
-        Player player = new Player("Tom",4L);
-        Player playerWithID = new Player(player.getName(),player.getGoals());
+        Player player = new Player("Tom",4L,5L,6L);
+        Player playerWithID = new Player(player.getName(),player.getGoals(),player.getAssists(),player.getTackles());
         playerWithID.setId(1L);
         testCatWithId.getPlayers().add(playerWithID);
         when(repo.findById(id)).thenReturn(java.util.Optional.ofNullable(testCatWithId));

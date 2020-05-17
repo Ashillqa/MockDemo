@@ -28,14 +28,21 @@ public class domainTest {
 
     @Before
     public void setUp() {
-        player = new Player( "Chris", 6L);
-        other = new Player( "Chris", 6L);
+        player = new Player( "Chris", 6L,7L,8L);
+        other = new Player( "Chris", 6L,7L,8L);
 
         cat = new Category("good");
         cat2 = new Category("good");
 
         user = new User("Harry01","Pass1");
         user2 = new User("Harry01","Pass1");
+    }
+
+    @Test
+    public void EmptyPlayer(){
+        Player one = new Player();
+        Player two = new Player();
+        assertEquals(one,two);
     }
 
     @Test
@@ -50,6 +57,8 @@ public class domainTest {
     public void createPlayerWithId() {
         assertEquals(1, player.getId(), 0);
     }
+    @Test
+    public void PlayerAssEquals(){ assertEquals(7,player.getAssists(),0);}
     @Test
     public void checkEquality() {
         assertTrue(player.equals(player));
@@ -66,13 +75,24 @@ public class domainTest {
     }
     @Test
     public void playerNameNullButOtherNameNotNulNl() {
-        player.setName(null);
+        player.setName("one");
+        other.setName("two");
         assertEquals(false,player.equals(other));
     }
     @Test
     public void playerNameNullButOtherNameNotNulli() {
         player.setId(null);
         assertFalse(player.equals(other));
+    }
+    @Test(expected = NullPointerException.class)
+    public void PlayerAssistsNull(){
+        player.setAssists(null);
+        assertFalse(player.getAssists().equals(other.getAssists()));
+    }
+    @Test
+    public void playerTackles(){
+        player.setTackles(9L);
+        assertFalse(player.getTackles().equals(other.getTackles()));
     }
 
     @Test
@@ -82,72 +102,19 @@ public class domainTest {
 
     @Test
     public void hashCodeTestWithNull() {
-        Player p = new Player(null,null);
-        Player o = new Player(null,null);
+        Player p = new Player(null,null,null,null);
+        Player o = new Player(null,null,null,null);
         assertEquals(p.hashCode(), o.hashCode());
     }
-
-    @Test
-    public void test_SetterProperlyName() throws NoSuchFieldException,IllegalAccessException{
-        final Player p1 = new Player();
-        p1.setName("george");
-        final Field feild = p1.getClass().getDeclaredField("name");
-        feild.setAccessible(true);
-        assertEquals("Fields didn't match",feild.get(p1),"george");
-    }
-
-    @Test
-    public void testGetter_getsValueName() throws NoSuchFieldException, IllegalAccessException {
-        final Player p2 = new Player();
-        final Field field = p2.getClass().getDeclaredField("name");
-        field.setAccessible(true);
-        field.set(p2,"magic_values");
-
-        final String result = p2.getName();
-        assertEquals("field wasn't retrieved properly", result, "magic_values");
-    }
-
-    @Test
-    public void testGetter_getsValueGoals() throws NoSuchFieldException, IllegalAccessException {
-        final Player p3 = new Player();
-        final Field field = p3.getClass().getDeclaredField("goals");
-        field.setAccessible(true);
-        field.set(p3,4L);
-
-        final Long result = p3.getGoals();
-        assertEquals(result,4L,0);
-    }
-    @Test
-    public void test_SetterProperlyGoals() throws NoSuchFieldException,IllegalAccessException{
-        final Player p4 = new Player();
-        p4.setGoals(2L);
-        final Field field= p4.getClass().getDeclaredField("goals");
-        field.setAccessible(true);
-        assertEquals("Fields didn't match",field.get(p4),2L);
-    }
-
-    @Test
-    public void test_SetterProperlyCat() throws NoSuchFieldException,IllegalAccessException{
-        final Player p5 = new Player();
-        final Category C1 = new Category("good");
-        p5.setCategory(C1);
-        final Field field = p5.getClass().getDeclaredField("category");
-        field.setAccessible(true);
-        assertEquals("Fields didn't match",field.get(p5),C1);
-    }
-
-    @Test
-    public void testGetter_getsValueCat() throws NoSuchFieldException, IllegalAccessException {
-        final Player p6 = new Player();
-        final Category C2 = new Category("bad");
-        final Field field = p6.getClass().getDeclaredField("category");
-        field.setAccessible(true);
-        field.set(p6,C2);
-
-        final Category result = p6.getCategory();
-        assertEquals("field wasn't retrieved properly", result, C2);
-    }
     ////////////////////////CATEGORY/////////////////////////////////////////////
+
+   @Test
+   public void EmptyCat(){
+        Category one = new Category();
+        Category two = new Category();
+        assertEquals(false,one.equals(two));
+   }
+
 
     @Test(expected = NullPointerException.class)
     public void createCatWithId() {
@@ -176,6 +143,14 @@ public class domainTest {
     }
 
     //////////////////////USER//////////////////////////////////////////////////
+
+    @Test
+    public void UserEmpty(){
+        User use = new User();
+        User use2 = new User();
+        assertEquals(use,use2);
+    }
+
 
     @Test(expected = NullPointerException.class)
     public void createUserWithId() {

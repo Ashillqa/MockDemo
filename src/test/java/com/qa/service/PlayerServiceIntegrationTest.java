@@ -39,7 +39,7 @@ public class PlayerServiceIntegrationTest {
 
     @Before
     public void setUp(){
-        this.testPlayer = new Player("Tom",3L);
+        this.testPlayer = new Player("Tom",3L,4L,5L);
         this.repo.deleteAll();
         this.testPlayerWithId = this.repo.save(this.testPlayer);
     }

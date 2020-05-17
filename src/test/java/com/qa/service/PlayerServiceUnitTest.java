@@ -48,9 +48,9 @@ public class PlayerServiceUnitTest {
         @Before  // this is how we set up our test and set up some situation
         public void setUp(){
             this.playerList = new ArrayList<>(); // new empty list for when we look at CRUD methods
-            this.testPlayer = new Player("tom",4L); //setting a employee
+            this.testPlayer = new Player("tom",4L,5L,6L); //setting a employee
             this.playerList.add(testPlayer); // add this to the list
-            this.testPlayerWithId = new Player(testPlayer.getName(),testPlayer.getGoals());
+            this.testPlayerWithId = new Player(testPlayer.getName(),testPlayer.getGoals(),testPlayer.getAssists(),testPlayer.getTackles());
             // apply those details to one which we will give an ID to
             this.testPlayerWithId.setId(id); // give the id we created to the test employee with an id
             this.pDTO=this.mapToDto(testPlayerWithId); // remember the employee needs to be DTO

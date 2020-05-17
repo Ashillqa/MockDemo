@@ -25,8 +25,8 @@ public class DTOTest {
 
     @Before
     public void setUp() {
-        pDTO = new PlayerDTO("harry",6L);
-        oDTO = new PlayerDTO("harry",6L);
+        pDTO = new PlayerDTO("harry",6L,4L,2L);
+        oDTO = new PlayerDTO("harry",6L,4L,2L);
 
         catDTO = new CatDTO("good");
         cat2DTO = new CatDTO("good");
@@ -45,6 +45,16 @@ public class DTOTest {
     public void PDTONullButOtherNameNotNull() {
         pDTO.setName("steve");
         assertFalse(pDTO.getName().equals(oDTO.getName()));
+    }
+    @Test
+    public void PDTOAssists(){
+        pDTO.setAssists(3L);
+        assertFalse(pDTO.getAssists().equals(oDTO.getAssists()));
+    }
+    @Test
+    public void PDTOTackles(){
+        pDTO.setTackles(1L);
+        assertFalse(pDTO.getTackles().equals(oDTO.getTackles()));
     }
 
     @Test
