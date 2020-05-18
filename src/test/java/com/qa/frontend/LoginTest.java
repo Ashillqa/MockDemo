@@ -1,26 +1,45 @@
 package com.qa.frontend;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
+
+import java.io.File;
+import java.io.IOException;
 
 import static java.lang.Thread.sleep;
+import static org.apache.tomcat.util.http.fileupload.FileUtils.*;
+import static org.aspectj.util.FileUtil.copyFile;
 
 
 public class LoginTest {
 
     //first we declare the web driver
     private WebDriver driver;
+    ExtentReports report;
+    ExtentTest test;
+    /////getting the reports
+    @BeforeTest
+    public void startReport(){
+        report = new ExtentReports(
+                System.getProperty("user.dir") + "/test-output/Report.html",
+                false
+        );
+        report
+                .addSystemInfo("Host Name", "QA")
+                .addSystemInfo("Tester", "Ashill");
+        report.loadConfig(new File(System.getProperty("user.dir") + "\\extent-report.xml"));
+    }
     // we set the method up to declare the path of the chromedriver and then create a new instance
     @BeforeMethod
     public void setUp(){
@@ -31,6 +50,9 @@ public class LoginTest {
     // you is the home page
     @Test
     public void LoginPage() throws InterruptedException {
+        test = report.startTest("Verifying the Login page");
+        driver.manage().window().maximize();
+        test.log(LogStatus.INFO, "Started chrome browser and made it fullscreen");
         driver.get("http://localhost:8080/index.html");
         Assert.assertEquals(driver.getTitle(),"PlayerRate");
         WebElement crtU = driver.findElement(By.id("cuName"));
@@ -52,11 +74,13 @@ public class LoginTest {
         sleep(7000);
        Assert.assertEquals(driver.getCurrentUrl(),"http://localhost:8080/player.html");
        sleep(1500);
+        test.log(LogStatus.PASS, "The value was exactly the same");
     }
     //this will create four players with the same attributes then go to the page where you can view and update players and finally
     //will go to the page to see what categories the players go in and use assert equals to confirm correct pages
     @Test
-    public void create4Players() throws InterruptedException {
+    public void create4Players() throws InterruptedException,IOException {
+        test = report.startTest("Checking being able to create");
         driver.get("http://localhost:8080/player.html");
         WebElement entName = driver.findElement(By.id("name"));
         entName.sendKeys("player");
@@ -85,12 +109,14 @@ public class LoginTest {
         cats.click();
         Assert.assertEquals(driver.getCurrentUrl(),"http://localhost:8080/performance.html");
         sleep(5000);
-
+        File picture = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        copyFile(picture, new File(System.getProperty("user.dir") + "/test-output/logoPage.jpg"));
+        test.log(LogStatus.PASS, "The logo was present", "<img src=logoPage.jpg2>");
     }
     //this will login using the first method/test and then we will update the password, log back in with the new
     //password and then delete the account
     @Test(expectedExceptions = StaleElementReferenceException.class)
-    public void LogThenUpdate() throws InterruptedException {
+    public void LogThenUpdate() throws InterruptedException, IOException {
         LoginPage();
         WebElement account = driver.findElement(By.xpath("/html/body/nav/div/button/a"));
         account.click();
@@ -118,12 +144,24 @@ public class LoginTest {
 
 
     }
+    @AfterMethod
+    public void getResult(ITestResult result){
+        driver.close();
+        if(result.getStatus() == ITestResult.FAILURE){
+            test.log(LogStatus.FAIL, "Test has failed " + result.getName());
+            test.log(LogStatus.FAIL, "Test has failed " + result.getThrowable());
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            test.log(LogStatus.PASS, "Test has passed " + result.getName());
+        }
+        report.endTest(test);
+    }
 
 
     //after we do our test we must make sure the driver is closed this takes care of that for you
     @AfterTest
     public void tearDown(){
-        driver.quit();
+        report.flush();
+        report.close();
     }
 
 
