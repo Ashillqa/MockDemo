@@ -45,7 +45,7 @@ public class PlayerServiceIntegrationTest {
     }
 
     @Test
-    public void readEmpTest(){
+    public void readPlayerTest(){
         assertThat(this.service.readPlayer())
                 .isEqualTo(
                         Stream.of(this.mapToDto(testPlayerWithId)).collect(Collectors.toList())
@@ -53,18 +53,18 @@ public class PlayerServiceIntegrationTest {
     }     // calling the read method of service is equal to our test emp in list
 
     @Test
-    public void createEmpTest(){
+    public void createPlayerTest(){
         assertEquals(this.mapToDto(this.testPlayerWithId),this.service.createPlayer(testPlayer));
     }  //test emp(id) as dto is the same as calling actual create method of service on test emp
 
     @Test
-    public void findEmpByIdTest(){
+    public void findPlayerByIdTest(){
         assertThat(this.service.findPlayerById(this.testPlayerWithId.getId()))
                 .isEqualTo(this.mapToDto(this.testPlayerWithId));
     } //calling findbyID of actual service should return the test emp with that id
 
     @Test
-    public void deleteEmpTest(){
+    public void deletePlayerTest(){
         assertThat(this.service.deletePlayer(this.testPlayerWithId.getId()))
                 .isFalse();
     }

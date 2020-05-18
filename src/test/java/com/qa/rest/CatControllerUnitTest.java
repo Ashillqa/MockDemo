@@ -57,14 +57,14 @@ public class CatControllerUnitTest {
     }
 
     @Test
-    public void createNoteTest(){
+    public void createCatTest(){
         when(this.service.createCat(testCat)).thenReturn(this.cDTO);
         assertEquals(this.controller.createCat(testCat), new ResponseEntity<CatDTO>(this.cDTO, HttpStatus.CREATED));
         verify(this.service, times(1)).createCat(testCat);
     }
 
     @Test
-    public void deleteNoteTestFalse(){
+    public void deleteCatTestFalse(){
         this.controller.deleteCat(id);
         verify(service, times(1)).deleteCat(id);
     }

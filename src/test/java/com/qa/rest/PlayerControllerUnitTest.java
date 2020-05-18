@@ -49,34 +49,34 @@ public class PlayerControllerUnitTest {
     }
 
     @Test
-    public void getAllEmpsTest(){
+    public void getAllPlayerTest(){
         when(service.readPlayer()).thenReturn(this.players.stream().map(this::mapToDto).collect(Collectors.toList()));
         assertFalse("No emps found", this.controller.getAllPlayers().getBody().isEmpty());
         verify(service, times(1)).readPlayer();
     }
 
     @Test
-    public void createNoteTest(){
+    public void createPlayerTest(){
         when(this.service.createPlayer(testPlayer)).thenReturn(this.pDTO);
         assertEquals(this.controller.createPlayer(testPlayer), new ResponseEntity<PlayerDTO>(this.pDTO, HttpStatus.CREATED));
         verify(this.service, times(1)).createPlayer(testPlayer);
     }
 
     @Test
-    public void deleteNoteTestFalse(){
+    public void deletePlayerTestFalse(){
         this.controller.deletePlayer(id);
         verify(service, times(1)).deletePlayer(id);
     }
 
     @Test
-    public void deleteEmpTestTrue(){
+    public void deletePlayerTestTrue(){
         when(service.deletePlayer(1L)).thenReturn(true);
         this.controller.deletePlayer(1L);
         verify(service, times(1)).deletePlayer(1L);
     }
 
     @Test
-    public void getEmpByIDTest(){
+    public void getPlayerByIDTest(){
         when(this.service.findPlayerById(id)).thenReturn(this.pDTO);
         assertEquals(this.controller.playerById(id), new ResponseEntity<PlayerDTO>(this.pDTO, HttpStatus.OK));
         verify(service, times(1)).findPlayerById(id);
@@ -84,7 +84,7 @@ public class PlayerControllerUnitTest {
 
 
     @Test
-    public void updateTest(){
+    public void updatePlayerTest(){
         when(this.service.updatePlayer(id,updatePlayer)).thenReturn(pDTO);
         assertEquals(this.controller.updatePlayer(id,updatePlayer),new ResponseEntity<PlayerDTO>(this.pDTO,HttpStatus.OK));
     }

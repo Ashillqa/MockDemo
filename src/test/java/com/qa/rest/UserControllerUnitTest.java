@@ -59,33 +59,33 @@ public class UserControllerUnitTest {
     }
 
     @Test
-    public void createNoteTest(){
+    public void createuserTest(){
         when(this.service.createUser(testuser)).thenReturn(this.uDTO);
         assertEquals(this.controller.createUser(testuser), new ResponseEntity<UserDTO>(this.uDTO, HttpStatus.CREATED));
         verify(this.service, times(1)).createUser(testuser);
     }
 
     @Test
-    public void deleteNoteTestFalse(){
+    public void deleteuserTestFalse(){
         this.controller.deleteUser(id);
         verify(service, times(1)).deleteUser(id);
     }
     @Test
-    public void deleteEmpTestTrue(){
+    public void deleteUserTestTrue(){
         when(service.deleteUser(1L)).thenReturn(true);
         this.controller.deleteUser(1L);
         verify(service, times(1)).deleteUser(1L);
     }
 
     @Test
-    public void getEmpByIDTest(){
+    public void getUserByIDTest(){
         when(this.service.findUserById(id)).thenReturn(this.uDTO);
         assertEquals(this.controller.userById(id), new ResponseEntity<UserDTO>(this.uDTO, HttpStatus.OK));
         verify(service, times(1)).findUserById(id);
     }
 
     @Test
-    public void updateTest(){
+    public void updateUserTest(){
         when(this.service.updateUser(id,updateUser)).thenReturn(uDTO);
         assertEquals(this.controller.updateUser(id,updateUser),new ResponseEntity<UserDTO>(this.uDTO,HttpStatus.OK));
     }

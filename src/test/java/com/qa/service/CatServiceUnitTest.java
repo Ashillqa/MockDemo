@@ -61,7 +61,7 @@ public class CatServiceUnitTest {
     }
 
     @Test
-    public void getAllEmpTest(){
+    public void getAllCatTest(){
         when(repo.findAll()).thenReturn(this.catList); //list is returned when findall method called on repo
         when(this.mapper.map(testCatWithId, CatDTO.class)).thenReturn(catDTO); //test emp becomes Dto
         assertFalse("Service returned none", this.service.readCat().isEmpty()); //list not empty
@@ -69,7 +69,7 @@ public class CatServiceUnitTest {
     }
 
     @Test
-    public void createEmpTest(){
+    public void createCatTest(){
         when(repo.save(testCat)).thenReturn(testCatWithId); //when you save it creates test emp with ID
         when(this.mapper.map(testCatWithId, CatDTO.class)).thenReturn(catDTO); //testempID becomes DTO
         assertEquals(this.service.createCat(testCat),this.catDTO); //creating test emp results in empDto therefore
@@ -77,7 +77,7 @@ public class CatServiceUnitTest {
     }
 
     @Test
-    public void findEmpById(){
+    public void findCatById(){
         when(repo.findById(id)).thenReturn(java.util.Optional.ofNullable(testCatWithId)); //should get empWithID
         when(this.mapper.map(testCatWithId, CatDTO.class)).thenReturn(catDTO); //testempid to DTO
         assertEquals(this.service.findCatById(this.id),catDTO); //therefore returns the empDto
@@ -85,7 +85,7 @@ public class CatServiceUnitTest {
     }
 
     @Test
-    public void deletePlayerExistingID(){
+    public void deleteCatExistingID(){
         when(this.repo.existsById(id)).thenReturn(true,false); //could be true or false
         assertFalse(service.deleteCat(id)); //it checks for it after so should be false
         verify(repo,times(1)).deleteById(id); //delete called once

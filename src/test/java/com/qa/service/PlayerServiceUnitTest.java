@@ -57,7 +57,7 @@ public class PlayerServiceUnitTest {
         }
 
         @Test
-        public void getAllEmpTest(){
+        public void getAllPlayerTest(){
             when(repo.findAll()).thenReturn(this.playerList); //list is returned when findall method called on repo
             when(this.mapper.map(testPlayerWithId, PlayerDTO.class)).thenReturn(pDTO); //test emp becomes Dto
             assertFalse("Service returned none", this.service.readPlayer().isEmpty()); //list not empty
@@ -65,7 +65,7 @@ public class PlayerServiceUnitTest {
         }
 
         @Test
-        public void createEmpTest(){
+        public void createPlayerTest(){
             when(repo.save(testPlayer)).thenReturn(testPlayerWithId); //when you save it creates test emp with ID
             when(this.mapper.map(testPlayerWithId, PlayerDTO.class)).thenReturn(pDTO); //testempID becomes DTO
             assertEquals(this.service.createPlayer(testPlayer),this.pDTO); //creating test emp results in empDto therefore
@@ -73,7 +73,7 @@ public class PlayerServiceUnitTest {
         }
 
         @Test
-        public void findEmpById(){
+        public void findPlayerById(){
             when(repo.findById(id)).thenReturn(java.util.Optional.ofNullable(testPlayerWithId)); //should get empWithID
             when(this.mapper.map(testPlayerWithId, PlayerDTO.class)).thenReturn(pDTO); //testempid to DTO
             assertEquals(this.service.findPlayerById(this.id),pDTO); //therefore returns the empDto

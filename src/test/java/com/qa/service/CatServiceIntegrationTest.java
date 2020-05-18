@@ -63,13 +63,13 @@ public class CatServiceIntegrationTest {
     }  //test emp(id) as dto is the same as calling actual create method of service on test emp
 
     @Test
-    public void findEmpByIdTest(){
+    public void findCatByIdTest(){
         assertThat(this.service.findCatById(this.testCatWithId.getId()))
                 .isEqualTo(this.mapToDto(this.testCatWithId));
     } //calling findbyID of actual service should return the test emp with that id
 
     @Test
-    public void deleteEmpTest(){
+    public void deleteCatTest(){
         assertThat(this.service.deleteCat(this.testCatWithId.getId()))
                 .isFalse();
     }

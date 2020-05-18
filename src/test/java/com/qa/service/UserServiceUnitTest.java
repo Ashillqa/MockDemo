@@ -58,7 +58,7 @@ public class UserServiceUnitTest {
         this.uDTO=this.mapToDto(testUserWithId);
     }
     @Test
-    public void getAllEmpTest(){
+    public void getAllUserTest(){
         when(repo.findAll()).thenReturn(this.userList);
         when(this.mapper.map(testUserWithId, UserDTO.class)).thenReturn(uDTO);
         assertFalse("Service returned none", this.service.readUser().isEmpty()); //list not empty
@@ -66,7 +66,7 @@ public class UserServiceUnitTest {
     }
 
     @Test
-    public void createEmpTest(){
+    public void createUserTest(){
         when(repo.save(testUser)).thenReturn(testUserWithId); //when you save it creates test emp with ID
         when(this.mapper.map(testUserWithId, UserDTO.class)).thenReturn(uDTO); //testempID becomes DTO
         assertEquals(this.service.createUser(testUser),this.uDTO); //creating test emp results in empDto therefore
@@ -74,7 +74,7 @@ public class UserServiceUnitTest {
     }
 
     @Test
-    public void findEmpById(){
+    public void findUserById(){
         when(repo.findById(id)).thenReturn(java.util.Optional.ofNullable(testUserWithId)); //should get empWithID
         when(this.mapper.map(testUserWithId, UserDTO.class)).thenReturn(uDTO); //testempid to DTO
         assertEquals(this.service.findUserById(this.id),uDTO); //therefore returns the empDto
@@ -82,7 +82,7 @@ public class UserServiceUnitTest {
     }
 
     @Test
-    public void deletePlayerExistingID(){
+    public void deleteUserExistingID(){
         when(this.repo.existsById(id)).thenReturn(true,false); //could be true or false
         assertFalse(service.deleteUser(id)); //it checks for it after so should be false
         verify(repo,times(1)).deleteById(id); //delete called once
