@@ -107,7 +107,7 @@
 
             <manifest>
 
-              <mainClass>com.qa.runner.App</mainClass>
+              <mainClass>com.qa.App</mainClass>
 
             </manifest>
 
@@ -180,7 +180,7 @@
               <archive>
                 <manifest>
                   <mainClass>
-                    com.qa.runner.App
+                    com.qa.App
                   </mainClass>
                 </manifest>
               </archive>
