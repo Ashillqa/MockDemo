@@ -16,17 +16,17 @@ You also need a MySQL instance set up e.g. GCP. The IP addresses, which are hard
 You will need to install or create the following:
 Maven, Java, Github(create), Jenkins, GCP(create instance), SonarQube, IDE such as Eclipse or Intellij, I will refer to Intellij in any examples.
 
-1- Set up GCP MySQL instance. 
-2- Whitelist your public IP address however this comes with its own risk * [risk](https://github.com/Ashillqa/SoftwareMarch16Project2/blob/master/PresentationDocs/RiskAssessment.docx)
-3- Clone this repository to your client.
-4- Set up a GitHub repository of your own
-5- Open the project as a Maven Project
-6- Change the hard-coded IP address in the src/main/resources/application.properties
-7- Run the project from your IDE and use the url localhost:8080/index.html to begin. Please note if port 8080 is taken simply enter - server.port= <new port?> in the application.properties file
+1) Set up GCP MySQL instance. 
+2) Whitelist your public IP address however this comes with its own risk * [risk](https://github.com/Ashillqa/SoftwareMarch16Project2/blob/master/PresentationDocs/RiskAssessment.docx)
+3) Clone this repository to your client.
+4) Set up a GitHub repository of your own
+5) Open the project as a Maven Project
+6) Change the hard-coded IP address in the src/main/resources/application.properties
+7) Run the project from your IDE and use the url localhost:8080/index.html to begin. Please note if port 8080 is taken simply enter - server.port= <new port?> in the application.properties file
 
 Setting up the CI Pipeline:
-1- As mentioned Jenkins should be downloaded as the build too, set up Jenkins and log in using the password provided in the setup Please note that Jenkins default server is port 8080 just like SpringBoot so either change the conf file for jenkins or easier option is to set server.port as mentioned above
-2- Next is to set up SonarQube in the following way:
+1) As mentioned Jenkins should be downloaded as the build too, set up Jenkins and log in using the password provided in the setup Please note that Jenkins default server is port 8080 just like SpringBoot so either change the conf file for jenkins or easier option is to set server.port as mentioned above
+2) Next is to set up SonarQube in the following way:
 ```
 create a VM instance on GCP
 On the networks section modify firewall rules to configure the port tcp-9000 and have the source IP range as 0.0.0.0/0 (all) add the configured port to your network tags on your VM
@@ -39,14 +39,14 @@ close the shell and re-open, entering the following up on the re-open:
 ```
 curl https://gist.githubusercontent.com/christophperrins/fa5155359f8808a83fee7e34abb21769/raw/10f8cee4968fe76510b9e6a04cb6c679be92b466/installSonaqubeWithDocker.sh | sh
 ```
-3- Now that you have SonarQube set up we go to Jenkins where step 1 already has us logged in and ready to build this project
-4- In Jenkins click on create a new freestyle project and click configure whch will take you to the build set up
-5- link it to your GitHub repository in the source management section and tick the following boxes underneath: 
+3) Now that you have SonarQube set up we go to Jenkins where step 1 already has us logged in and ready to build this project
+4) In Jenkins click on create a new freestyle project and click configure whch will take you to the build set up
+5) link it to your GitHub repository in the source management section and tick the following boxes underneath: 
 ```
 poll scm box
 Abort build when stuck
 ```
-6- Begin the build for your project by firstly selecting 'Windows batch command' in the drop down. Now you can add the following as separate batch commands for clarity:
+6) Begin the build for your project by firstly selecting 'Windows batch command' in the drop down. Now you can add the following as separate batch commands for clarity:
 First is building your Maven project with the below command:
 ```
 mvn clean package test
@@ -67,8 +67,8 @@ mvn deploy:deploy-file
 		--define file=target/<artifactId>-<descriptorRef>.jar (the name of the fat jar in /target following build step)
 		--define repositoryId=nexus
 ```
-7- Save your configuration and click build now. This will now enable you to understand your code from a static analysis point of view on SonarQube. 
-8 - your aim should always be to equal and go beyond the 80% industry standard level
+7) Save your configuration and click build now. This will now enable you to understand your code from a static analysis point of view on SonarQube. 
+8) your aim should always be to equal and go beyond the 80% industry standard level
 
 ## Running the tests
 
@@ -85,6 +85,7 @@ Example:
 			assertEquals(1, customer.getId(), 0);
 			assertEquals("Tom", player.getName());
 ```.
+```
 ### Mockito testing
 Mockito is a JAVA-based library that is another form of effective unit testing of JAVA applications. Mockito is used to mock interfaces so that a dummy functionality can be added to a mock interface that can be used in unit testing. This includes @Spy which when called, calls the actual method of the object you are mocking.
 Example:
