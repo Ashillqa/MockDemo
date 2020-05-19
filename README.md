@@ -6,6 +6,7 @@ This project links a Google Cloud Platform MySQL instance to a Java application 
 2) Open the project as a Maven project in your IDE such as Eclipse
 3) Link it to your MySQL instance by replacing the respective info in the application.properties file such as the database name, connection name and url as well as username and password
 4) You may now run it from your IDE as a Maven project and use it on your MySQL instance
+5) The reason it doesnt matter which gcp you connect to is because upon running the app it automatically creates the tables and then deletes all entries upon termination - this is due to the application.properties file.
 
 ## Prerequisites
 In order to run the program from the command line, Maven must be used to create a jar containing the dependencies.
@@ -16,7 +17,7 @@ You will need to install or create the following:
 Maven, Java, Github(create), Jenkins, GCP(create instance), SonarQube, IDE such as Eclipse or Intellij, I will refer to Intellij in any examples.
 
 1- Set up GCP MySQL instance. 
-2- Whitelist your public IP address however this comes with its own risk * [ERD](https://github.com/Ashillqa/SoftwareMarch16Project2/blob/master/PresentationDocs/RiskAssessment.docx)
+2- Whitelist your public IP address however this comes with its own risk * [risk](https://github.com/Ashillqa/SoftwareMarch16Project2/blob/master/PresentationDocs/RiskAssessment.docx)
 3- Clone this repository to your client.
 4- Set up a GitHub repository of your own
 5- Open the project as a Maven Project
@@ -67,12 +68,13 @@ mvn deploy:deploy-file
 		--define repositoryId=nexus
 ```
 7- Save your configuration and click build now. This will now enable you to understand your code from a static analysis point of view on SonarQube. 
+8 - your aim should always be to equal and go beyond the 80% industry standard level
 
 ## Running the tests
 
 SonarQube as mentioned is our static analysis tool. By seeing the suggestions and outcome of your project on SonarQube you can now assess what bugs to fix, which peices of code to improve and which sections of your code can be tested to provide better coverage.
 The tests themselves were both JUnit tests and Mockito tests which as the name suggests will mock some of the classes and methods you wish to test the functionality of.
-I attempted to test the Player, Categoriess and users using unit tests and integration tests for their respective packages - Domain,DTO,service and controller as well as the App class containing the Main method.
+I attempted to test the Player, Categoriess and users using unit tests and integration tests for their respective packages - Domain,DTO,service and controller as well as the App class containing the Main method. The front end testing does not get taken into account by sonarqube therefore the test coverage percentage will be lower compared to the percentage given to you in Intellij.
 
 ### JUnit tests
 This method executes the code under test. You use an assert method, provided by JUnit or another assert framework, to check an expected result versus the actual result. One of the reasons we use unit tests are that the classes you are testing do not require a server therefore this saves testing time and the Assert methods allow someone not related to the project to understand what is being looked for in the test and if functionality has been achieved for that particular test.
@@ -82,7 +84,7 @@ Example:
 		public void createPlayerWithId() {
 			assertEquals(1, customer.getId(), 0);
 			assertEquals("Tom", player.getName());
-```
+```.
 ### Mockito testing
 Mockito is a JAVA-based library that is another form of effective unit testing of JAVA applications. Mockito is used to mock interfaces so that a dummy functionality can be added to a mock interface that can be used in unit testing. This includes @Spy which when called, calls the actual method of the object you are mocking.
 Example:
@@ -99,7 +101,14 @@ Example:
     }
 ```
 ### Selenium testing
-Selenium is not counted for in terms of Sonarqube i.e. it does not count towards test coverage howvever it is an effective way of testing the front end to make sure that it functions the way you want it to as per the backends functions.
+Selenium is not counted for in terms of Sonarqube i.e. it does not count towards test coverage howvever it is an effective way of testing the front end to make sure that it functions the way you want it to as per the backends functions. Using the WebDriver and declaring a new instance of it allows you to run the app on google chrome and test functions such as logging in, creating a player and viewing the players in the category they belong to.
+
+Examples:
+to see this in action see the following folders in the project:
+
+* [test-output](https://github.com/Ashillqa/SoftwareMarch16Project2/tree/master/test-output)
+* [front-end-Tests](https://github.com/Ashillqa/SoftwareMarch16Project2/tree/master/src/test/java/com/qa/frontend)
+
 
 ## Built With
 
